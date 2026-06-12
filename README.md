@@ -6,8 +6,6 @@
 
 [Deutsch](README.de.md)
 
-# SwiftAgent
-
 ![Platform](https://img.shields.io/badge/platform-macOS%2013%2B%20%7C%20iOS%2016%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
