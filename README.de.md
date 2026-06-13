@@ -167,11 +167,6 @@ cd /path/to/SwiftAgent
 swift test
 ```
 
----
-
-## Lizenz
-
-MIT
 
 ---
 
