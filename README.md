@@ -167,10 +167,6 @@ swift test
 
 ---
 
-## License
-
-MIT
-
 ---
 
 **Author:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Framework Preview · **Last Updated:** June 2026
