@@ -47,15 +47,17 @@ public struct ShellTool: Tool {
             process.standardOutput = pipe
             process.standardError = errPipe
 
-            do {
-                try process.run()
-                process.waitUntilExit()
+            process.terminationHandler = { _ in
                 let outData = pipe.fileHandleForReading.readDataToEndOfFile()
                 let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
                 var result = String(data: outData, encoding: .utf8) ?? ""
                 let errStr = String(data: errData, encoding: .utf8) ?? ""
                 if !errStr.isEmpty { result += "\n[stderr]: \(errStr)" }
                 continuation.resume(returning: result.trimmingCharacters(in: .whitespacesAndNewlines))
+            }
+
+            do {
+                try process.run()
             } catch {
                 continuation.resume(throwing: ToolError.executionFailed(toolName: name, underlying: error))
             }

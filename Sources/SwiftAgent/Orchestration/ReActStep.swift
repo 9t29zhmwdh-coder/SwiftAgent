@@ -1,8 +1,8 @@
 import Foundation
 
 /// Repräsentiert einen Schritt im ReAct-Loop
-public struct ReActStep: Sendable {
-    public enum StepType: Sendable {
+public struct ReActStep: @unchecked Sendable {
+    public enum StepType: @unchecked Sendable {
         case reasoning(String)
         case toolCall(name: String, input: [String: Any])
         case observation(toolName: String, output: String)

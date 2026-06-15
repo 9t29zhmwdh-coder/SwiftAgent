@@ -1,6 +1,6 @@
 import Foundation
 
-public enum AgentEvent: Sendable {
+public enum AgentEvent: @unchecked Sendable {
     /// Ein Text-Delta wurde empfangen (Streaming)
     case textDelta(String)
     /// Vollständiger Text einer Iteration
