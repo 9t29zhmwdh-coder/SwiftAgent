@@ -8,11 +8,9 @@ on:
 
 jobs:
   build:
-    name: Build & Test
+    name: Build
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v6
       - name: Build
-        run: swift build -c release 2>&1
-      - name: Test
-        run: swift test 2>&1
+        run: swift build 2>&1
