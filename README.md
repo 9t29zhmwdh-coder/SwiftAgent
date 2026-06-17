@@ -11,7 +11,7 @@
 ![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A lightweight, modular Swift agent framework for local LLMs — no external dependencies, pure Foundation + URLSession.
+A lightweight, modular Swift agent framework for local LLMs; no external dependencies, pure Foundation + URLSession.
 
 Works out of the box with **Ollama** (port 11434) and **llama.cpp** (port 8080) via their OpenAI-compatible APIs.
 
@@ -19,14 +19,14 @@ Works out of the box with **Ollama** (port 11434) and **llama.cpp** (port 8080) 
 
 ## Features
 
-- **Zero external dependencies** — Foundation + URLSession only
-- **Swift Concurrency** — async/await, actors, AsyncStream
-- **ReAct Loop** — Reason → Act → Observe (multi-step tool use)
-- **Streaming** — Server-Sent Events (SSE) with `AsyncThrowingStream`
-- **Tool System** — JSON Schema, OpenAI function-calling format, built-in tools
-- **Memory** — Sliding-window + LLM-based summary compression
-- **Plugin Architecture** — Lifecycle hooks for logging, monitoring, tracing
-- **macOS 13+ and iOS 16+** — single codebase, no platform-specific core
+- **Zero external dependencies**: Foundation + URLSession only
+- **Swift Concurrency**: async/await, actors, AsyncStream
+- **ReAct Loop**: Reason → Act → Observe (multi-step tool use)
+- **Streaming**: Server-Sent Events (SSE) with `AsyncThrowingStream`
+- **Tool System**: JSON Schema, OpenAI function-calling format, built-in tools
+- **Memory**: Sliding-window + LLM-based summary compression
+- **Plugin Architecture**: Lifecycle hooks for logging, monitoring, tracing
+- **macOS 13+ and iOS 16+**: single codebase, no platform-specific core
 
 ---
 
