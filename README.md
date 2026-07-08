@@ -158,6 +158,12 @@ Agent (Actor)
 
 ---
 
+## Uninstall / Cleanup
+
+SwiftAgent is a library, not an installed program: remove it from your host app's `Package.swift` dependencies (and delete the resolved entry in `Package.resolved`) and it is gone. SwiftAgent itself writes no files, no `UserDefaults`, and no Keychain entries; `FilesystemTool` only touches paths your own app explicitly passes to it via `allowedBasePath`. Any conversation memory lives in-process for the lifetime of your app and disappears when it exits.
+
+---
+
 ## Run Tests
 
 ```bash
