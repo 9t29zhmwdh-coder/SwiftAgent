@@ -5,10 +5,26 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-## [0.1.0] — 2026-06-15
+### Fixed
+
+- Fixed the test suite failing to compile entirely (inline `await` on an actor-isolated property inside `XCTAssertEqual`/`XCTAssertTrue`, and a missing `await` on the actor-isolated `Agent.runStream(_:)`); the same missing `await` also appeared in both READMEs' streaming example
+- Fixed em-dashes across documentation files
+- Fixed `CONTRIBUTING.md` referencing a nonexistent `SwiftAgent.xcodeproj` (this is a Swift Package)
+- Corrected `ARCHITECTURE.md`'s file tree and design decisions to match the actual `Sources/SwiftAgent/` layout
+
+### Changed
+
+- CI now runs `swift test` in addition to `swift build`
+
+## [0.1.0] - 2026-06-15
+
 ### Added
-- Initial import: ReAct loop engine
-- Tool calling protocol
-- Memory module
-- Ollama and llama.cpp backends
-- Pure Foundation + URLSession implementation
+
+- ReAct agent loop (`AgentOrchestrator`): reason, act, observe cycle with a configurable `maxIterations` cutoff
+- Streaming support (`runStream`, `AgentEvent`): text deltas, tool call start/finish, final result
+- Tool system: `Tool` protocol, JSON Schema parameter definitions, OpenAI function-calling format, `ToolRegistry` actor
+- Built-in tools: `FilesystemTool`, `HTTPTool`, `ShellTool` (macOS only)
+- Memory: `ConversationMemory` (sliding window) and `SummaryMemory` (LLM-based summary compression)
+- Plugin architecture (`AgentPlugin`): lifecycle hooks for logging, monitoring, tracing
+- Ollama and llama.cpp backends via a shared `OpenAICompatibleProvider`
+- Pure Foundation + URLSession implementation, no external dependencies

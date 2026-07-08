@@ -15,7 +15,8 @@ final class AgentOrchestratorTests: XCTestCase {
         let result = try await orchestrator.run(messages: [.user("Hallo")], memory: memory)
 
         XCTAssertEqual(result, "Hallo! Ich bin der Agent.")
-        XCTAssertEqual(await provider.callCount, 1)
+        let callCount = await provider.callCount
+        XCTAssertEqual(callCount, 1)
     }
 
     func testMaxIterationsReturnsFallback() async throws {
@@ -47,8 +48,10 @@ final class AgentOrchestratorTests: XCTestCase {
         )
         _ = try await orchestrator.run(messages: [.user("Test")], memory: memory)
 
-        XCTAssertEqual(await plugin.willCallLLMCount, 1)
-        XCTAssertEqual(await plugin.didFinishCount, 1)
+        let willCallLLMCount = await plugin.willCallLLMCount
+        let didFinishCount = await plugin.didFinishCount
+        XCTAssertEqual(willCallLLMCount, 1)
+        XCTAssertEqual(didFinishCount, 1)
     }
 
     func testStreamingFinishEvent() async throws {

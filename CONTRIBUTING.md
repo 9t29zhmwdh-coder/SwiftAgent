@@ -12,7 +12,7 @@
 
 1. Fork the repository
 2. `git clone https://github.com/YOUR_USERNAME/SwiftAgent`
-3. Open in Xcode: `open SwiftAgent.xcodeproj` (or `.xcworkspace`)
+3. Open in Xcode: `open Package.swift` (this is a Swift Package, there is no `.xcodeproj`)
 4. Build: `⌘+B`
 
 ## Development Workflow
@@ -30,12 +30,12 @@
 
 ## Commit Convention
 
-`[type] description` — where type is:
-- `[feat]` — new feature
-- `[fix]` — bug fix
-- `[docs]` — documentation only
-- `[refactor]` — code cleanup
-- `[test]` — tests only
+`[type] description`, where type is:
+- `[feat]`: new feature
+- `[fix]`: bug fix
+- `[docs]`: documentation only
+- `[refactor]`: code cleanup
+- `[test]`: tests only
 
 ## Questions?
 

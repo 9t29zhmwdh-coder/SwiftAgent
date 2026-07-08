@@ -38,7 +38,8 @@ final class ConversationMemoryTests: XCTestCase {
         let memory = ConversationMemory()
         await memory.add(message: .user("test"))
         await memory.clear()
-        XCTAssertEqual(await memory.count, 0)
+        let count = await memory.count
+        XCTAssertEqual(count, 0)
     }
 
     func testRetrieveLast() async {
