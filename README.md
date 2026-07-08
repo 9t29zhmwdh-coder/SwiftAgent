@@ -6,11 +6,14 @@
 
 [Deutsch](README.de.md)
 
+[![CI](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions)
 ![Platform](https://img.shields.io/badge/platform-macOS%2013%2B%20%7C%20iOS%2016%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A lightweight, modular Swift agent framework for local LLMs — no external dependencies, pure Foundation + URLSession.
+A lightweight, modular Swift agent framework for local LLMs, no external dependencies, pure Foundation + URLSession.
+
+> **How it's used:** SwiftAgent is a Swift Package (library), not a standalone app; add it as a dependency to your own macOS/iOS project and import it, there is nothing to install or run on its own.
 
 Works out of the box with **Ollama** (port 11434) and **llama.cpp** (port 8080) via their OpenAI-compatible APIs.
 
@@ -18,14 +21,14 @@ Works out of the box with **Ollama** (port 11434) and **llama.cpp** (port 8080) 
 
 ## Features
 
-- **Zero external dependencies** — Foundation + URLSession only
-- **Swift Concurrency** — async/await, actors, AsyncStream
-- **ReAct Loop** — Reason → Act → Observe (multi-step tool use)
-- **Streaming** — Server-Sent Events (SSE) with `AsyncThrowingStream`
-- **Tool System** — JSON Schema, OpenAI function-calling format, built-in tools
-- **Memory** — Sliding-window + LLM-based summary compression
-- **Plugin Architecture** — Lifecycle hooks for logging, monitoring, tracing
-- **macOS 13+ and iOS 16+** — single codebase, no platform-specific core
+- **Zero external dependencies**: Foundation + URLSession only
+- **Swift Concurrency**: async/await, actors, AsyncStream
+- **ReAct Loop**: Reason → Act → Observe (multi-step tool use)
+- **Streaming**: Server-Sent Events (SSE) with `AsyncThrowingStream`
+- **Tool System**: JSON Schema, OpenAI function-calling format, built-in tools
+- **Memory**: Sliding-window + LLM-based summary compression
+- **Plugin Architecture**: Lifecycle hooks for logging, monitoring, tracing
+- **macOS 13+ and iOS 16+**: single codebase, no platform-specific core
 
 ---
 
@@ -76,7 +79,7 @@ let result = try await agent.run("Read /tmp/notes.txt and summarize the content.
 ### Streaming
 
 ```swift
-for try await event in agent.runStream("Write a haiku about Swift") {
+for try await event in await agent.runStream("Write a haiku about Swift") {
     switch event {
     case .textDelta(let chunk):
         print(chunk, terminator: "")
@@ -167,6 +170,4 @@ swift test
 
 ---
 
----
-
-**Author:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Framework Preview · **Last Updated:** June 2026
+**Author:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Framework Preview · **Last Updated:** July 2026

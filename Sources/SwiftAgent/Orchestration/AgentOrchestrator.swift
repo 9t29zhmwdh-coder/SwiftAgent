@@ -165,6 +165,10 @@ public final class AgentOrchestrator: Sendable {
         return memoryMessages.isEmpty ? messages : memoryMessages
     }
 
+    // Marking `action` as @Sendable here surfaces stricter capture errors at every call site
+    // (mutable `context`, non-Sendable `[String: Any]` tool input), so this stays a warning
+    // under the current experimental StrictConcurrency setting rather than a real fix; revisit
+    // when adopting full Swift 6 language mode.
     private func notifyPlugins(_ action: @escaping (any AgentPlugin) async -> Void) async {
         await withTaskGroup(of: Void.self) { group in
             for plugin in plugins { group.addTask { await action(plugin) } }

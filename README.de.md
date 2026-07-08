@@ -6,13 +6,14 @@
 
 [English](README.md)
 
-# SwiftAgent
-
+[![CI](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions)
 ![Platform](https://img.shields.io/badge/platform-macOS%2013%2B%20%7C%20iOS%2016%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Ein leichtgewichtiges, modulares Swift-Agent-Framework für lokale LLMs — keine externen Abhängigkeiten, reines Foundation + URLSession.
+Ein leichtgewichtiges, modulares Swift-Agent-Framework für lokale LLMs, keine externen Abhängigkeiten, reines Foundation + URLSession.
+
+> **Wie es genutzt wird:** SwiftAgent ist ein Swift Package (Library), keine eigenständige App; füge es als Dependency zu deinem eigenen macOS/iOS-Projekt hinzu und importiere es, es gibt nichts eigenständig zu installieren oder zu starten.
 
 Funktioniert direkt mit **Ollama** (Port 11434) und **llama.cpp** (Port 8080) über deren OpenAI-kompatible APIs.
 
@@ -20,14 +21,14 @@ Funktioniert direkt mit **Ollama** (Port 11434) und **llama.cpp** (Port 8080) ü
 
 ## Features
 
-- **Keine externen Abhängigkeiten** — nur Foundation + URLSession
-- **Swift Concurrency** — async/await, Actors, AsyncStream
-- **ReAct-Loop** — Reason → Act → Observe (mehrstufige Tool-Nutzung)
-- **Streaming** — Server-Sent Events (SSE) mit `AsyncThrowingStream`
-- **Tool-System** — JSON Schema, OpenAI Function-Calling-Format, eingebaute Tools
-- **Memory** — Sliding-Window + LLM-basierte Zusammenfassungskomprimierung
-- **Plugin-Architektur** — Lifecycle-Hooks für Logging, Monitoring, Tracing
-- **macOS 13+ und iOS 16+** — eine Codebasis, kein plattformspezifischer Core
+- **Keine externen Abhängigkeiten**: nur Foundation + URLSession
+- **Swift Concurrency**: async/await, Actors, AsyncStream
+- **ReAct-Loop**: Reason → Act → Observe (mehrstufige Tool-Nutzung)
+- **Streaming**: Server-Sent Events (SSE) mit `AsyncThrowingStream`
+- **Tool-System**: JSON Schema, OpenAI Function-Calling-Format, eingebaute Tools
+- **Memory**: Sliding-Window + LLM-basierte Zusammenfassungskomprimierung
+- **Plugin-Architektur**: Lifecycle-Hooks für Logging, Monitoring, Tracing
+- **macOS 13+ und iOS 16+**: eine Codebasis, kein plattformspezifischer Core
 
 ---
 
@@ -78,7 +79,7 @@ let result = try await agent.run("Lese /tmp/notes.txt und fasse den Inhalt zusam
 ### Streaming
 
 ```swift
-for try await event in agent.runStream("Schreibe ein Haiku über Swift") {
+for try await event in await agent.runStream("Schreibe ein Haiku über Swift") {
     switch event {
     case .textDelta(let chunk):
         print(chunk, terminator: "")
@@ -167,8 +168,7 @@ cd /path/to/SwiftAgent
 swift test
 ```
 
-
 ---
 
-**Autor:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Framework Preview · **Zuletzt aktualisiert:** Juni 2026
+**Autor:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Framework Preview · **Zuletzt aktualisiert:** Juli 2026
 
