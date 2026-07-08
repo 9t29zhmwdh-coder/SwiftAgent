@@ -1,4 +1,4 @@
-# SwiftAgent — Professional Repo Skeleton
+# SwiftAgent, Professional Repo Skeleton
 
 **Generated:** 2026-06-16 | **Earliest commit:** 2026-06-15 | **Release:** v0.1.0
 
@@ -8,7 +8,7 @@
 - ARCHITECTURE.md ✅
 - PRIVACY.md ✅
 - ROADMAP.md ✅
-- CONTRIBUTING.md (preserved — already existed)
+- CONTRIBUTING.md (preserved, already existed)
 - CODE_OF_CONDUCT.md ✅
 - SECURITY.md ✅
 - CHANGELOG.md ✅
@@ -56,4 +56,4 @@ SwiftAgent/
 ```
 
 ---
-*SwiftAgent — RayStudio · Rafael Yilmaz · MIT License · 2026*
+*SwiftAgent, RayStudio · Rafael Yilmaz · MIT License · 2026*

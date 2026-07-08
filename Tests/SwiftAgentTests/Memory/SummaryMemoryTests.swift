@@ -27,6 +27,7 @@ final class SummaryMemoryTests: XCTestCase {
         let memory = SummaryMemory(llmProvider: provider, recentWindowSize: 5)
         await memory.add(message: .user("test"))
         await memory.clear()
-        XCTAssertEqual(await memory.count, 0)
+        let count = await memory.count
+        XCTAssertEqual(count, 0)
     }
 }

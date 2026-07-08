@@ -21,9 +21,11 @@ final class ToolRegistryTests: XCTestCase {
 
     func testIsEmpty() async {
         let registry = ToolRegistry()
-        XCTAssertTrue(await registry.isEmpty)
+        let emptyBefore = await registry.isEmpty
+        XCTAssertTrue(emptyBefore)
         await registry.register(MockTool())
-        XCTAssertFalse(await registry.isEmpty)
+        let emptyAfter = await registry.isEmpty
+        XCTAssertFalse(emptyAfter)
     }
 
     func testToolDefinitions() async {

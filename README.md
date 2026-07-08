@@ -74,7 +74,7 @@ let result = try await agent.run("Read /tmp/notes.txt and summarize the content.
 ### Streaming
 
 ```swift
-for try await event in agent.runStream("Write a haiku about Swift") {
+for try await event in await agent.runStream("Write a haiku about Swift") {
     switch event {
     case .textDelta(let chunk):
         print(chunk, terminator: "")
@@ -164,8 +164,6 @@ Agent (Actor)
 cd /path/to/SwiftAgent
 swift test
 ```
-
----
 
 ---
 

@@ -31,7 +31,8 @@ final class AgentTests: XCTestCase {
         let agent = Agent(provider: provider)
         _ = try await agent.run("Test")
         await agent.clearMemory()
-        XCTAssertEqual(await agent.messageCount, 0)
+        let messageCount = await agent.messageCount
+        XCTAssertEqual(messageCount, 0)
     }
 
     func testStreamingRunFinishes() async throws {
@@ -39,7 +40,7 @@ final class AgentTests: XCTestCase {
         await provider.setNextResponse(content: "Stream-Test")
         let agent = Agent(provider: provider)
         var allEvents: [AgentEvent] = []
-        for try await event in agent.runStream("Streaming Test") {
+        for try await event in await agent.runStream("Streaming Test") {
             allEvents.append(event)
         }
         let hasFinished = allEvents.contains {
