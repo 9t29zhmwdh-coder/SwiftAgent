@@ -33,6 +33,8 @@ Works out of the box with **Ollama** (port 11434) and **llama.cpp** (port 8080) 
 - macOS 13+ / iOS 16+
 - [Ollama](https://ollama.com) (port 11434) **or** [llama.cpp server](https://github.com/ggerganov/llama.cpp) (port 8080)
 
+> ℹ️ This is a Swift Package Manager library for developers to embed in their own projects, not a standalone app — add it as a dependency in `Package.swift`, there's nothing to "install and run" separately.
+
 ---
 
 ## Quick Start
