@@ -3,12 +3,12 @@
 All notable changes to SwiftAgent will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [0.1.1] - 2026-07-10
 
 ### Fixed
 
 - Fixed the test suite failing to compile entirely (inline `await` on an actor-isolated property inside `XCTAssertEqual`/`XCTAssertTrue`, and a missing `await` on the actor-isolated `Agent.runStream(_:)`); the same missing `await` also appeared in both READMEs' streaming example
-- Fixed em-dashes across documentation files
+- Fixed em-dashes across documentation files, including one remaining instance in README.md
 - Fixed `CONTRIBUTING.md` referencing a nonexistent `SwiftAgent.xcodeproj` (this is a Swift Package)
 - Corrected `ARCHITECTURE.md`'s file tree and design decisions to match the actual `Sources/SwiftAgent/` layout
 
