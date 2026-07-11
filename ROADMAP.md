@@ -25,3 +25,7 @@
 
 - [ ] Swift Package Index listing
 - [ ] Comprehensive documentation site (DocC)
+
+## Dual-Licensing Readiness
+
+Assessed 2026-07-11: Community-only, not a Dual-Licensing candidate. SwiftAgent is a developer library/SDK (Swift Package Manager dependency, not a standalone app), the same category as agent frameworks like LangChain, AutoGen and CrewAI, which conventionally stay fully open source to maximize adoption. Its planned v1.0.0 distribution channel (Swift Package Index) is a standard package registry listing, not a licensing split. Revisit only if a genuine hosted/managed-service offering is built around it.
