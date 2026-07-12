@@ -14,6 +14,10 @@ Funktioniert direkt mit **Ollama** (Port 11434) und **llama.cpp** (Port 8080) ü
 
 ---
 
+> ℹ️ Dies ist eine Swift-Package-Manager-Bibliothek für Entwickler, um sie in eigene Projekte einzubetten, keine eigenständige App: als Abhängigkeit in `Package.swift` hinzufügen, es gibt nichts separat zu "installieren und starten".
+
+---
+
 ## Features
 
 - **Keine externen Abhängigkeiten**: nur Foundation + URLSession
