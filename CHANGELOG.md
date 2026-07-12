@@ -3,6 +3,12 @@
 All notable changes to SwiftAgent will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.3] - 2026-07-13
+
+### Fixed
+
+- README.de.md was missing the "this is a library, not a standalone app" callout that README.md has right after the badge row.
+
 ## [0.1.2] - 2026-07-11
 
 ### Added
