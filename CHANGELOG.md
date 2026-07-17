@@ -3,6 +3,16 @@
 All notable changes to SwiftAgent will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0] - 2026-07-17
+
+First stable release. As a Swift Package Manager library (not a
+standalone app), its distribution *is* the versioned git tag itself:
+consumers add `.package(url: ..., from: "1.0.0")` to their own
+`Package.swift`, there is no separate installer or binary to build.
+CI already builds and tests the package on every push, so this tag
+marks the point where that continuously-verified library is
+considered stable per this portfolio's own SemVer discipline.
+
 ## [0.1.4] - 2026-07-17
 
 ### Changed
