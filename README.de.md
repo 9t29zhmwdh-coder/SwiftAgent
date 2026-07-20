@@ -7,6 +7,7 @@
 [🇬🇧 English Version](README.md)
 
 [![CI](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions) [![CodeQL](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/9t29zhmwdh-coder/SwiftAgent/security/code-scanning) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/9t29zhmwdh-coder/SwiftAgent/badge)](https://securityscorecards.dev/viewer/?uri=github.com/9t29zhmwdh-coder/SwiftAgent)
+
 ![Apple Silicon](https://img.shields.io/badge/Apple-Silicon-000000?logo=apple&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-macOS_%7C_iOS-lightgrey?logo=apple&logoColor=black) ![Swift](https://img.shields.io/badge/Swift-F05138?logo=swift&logoColor=white) ![AI | Claude Code](https://img.shields.io/badge/AI-Claude_Code-black?logo=anthropic&logoColor=white) ![AI | Copilot](https://img.shields.io/badge/AI-Copilot-black?logo=github&logoColor=white) ![AI | Ollama](https://img.shields.io/badge/AI-Ollama-black?logo=ollama&logoColor=white)
 
 Ein leichtgewichtiges, modulares Swift-Agent-Framework für lokale LLMs; keine externen Abhängigkeiten, reines Foundation + URLSession.

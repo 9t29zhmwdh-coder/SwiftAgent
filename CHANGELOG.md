@@ -3,6 +3,17 @@
 All notable changes to SwiftAgent will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.1] - 2026-07-20
+
+### Changed
+
+- OpenSSF Scorecard workflow and badge.
+- `copilot-instructions.md` for consistent AI-assisted contributions.
+- Coverage reporting in CI (swift test --enable-code-coverage), pinned the checkout action.
+- Unified the EN/DE language-switch link format.
+- SECURITY.md now lists 1.0.x as the supported version instead of the stale 0.1.x.
+- Split the README's security/CI badges onto their own line, separate from the platform/tech/AI badges (they were rendering as a single merged line).
+
 ## [1.0.0] - 2026-07-17
 
 First stable release. As a Swift Package Manager library (not a
