@@ -3,6 +3,13 @@
 All notable changes to SwiftAgent will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+- `OpenAICompatibleProvider`, `OllamaProvider` and `LlamaCppProvider` now accept `temperature`/`maxTokens` and forward them to the request body.
+- `Agent.ollama(...)` and `Agent.llamaCpp(...)` now pass `configuration.temperature`/`configuration.maxTokens` down to the provider they create, closing a gap where both settings were accepted but silently never reached the LLM request.
+
 ## [1.0.1] - 2026-07-20
 
 ### Changed

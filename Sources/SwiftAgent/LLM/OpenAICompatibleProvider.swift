@@ -5,17 +5,23 @@ public final class OpenAICompatibleProvider: LLMProvider, @unchecked Sendable {
     public let baseURL: URL
     private let urlSession: URLSession
     private let timeoutInterval: TimeInterval
+    private let temperature: Double?
+    private let maxTokens: Int?
 
     public init(
         modelName: String,
         baseURL: URL,
         urlSession: URLSession = .shared,
-        timeoutInterval: TimeInterval = 300
+        timeoutInterval: TimeInterval = 300,
+        temperature: Double? = nil,
+        maxTokens: Int? = nil
     ) {
         self.modelName = modelName
         self.baseURL = baseURL
         self.urlSession = urlSession
         self.timeoutInterval = timeoutInterval
+        self.temperature = temperature
+        self.maxTokens = maxTokens
     }
 
     public func chat(messages: [ChatMessage], tools: [ToolDefinition]?) async throws -> ChatResponse {
@@ -96,7 +102,9 @@ public final class OpenAICompatibleProvider: LLMProvider, @unchecked Sendable {
             model: modelName,
             messages: messages,
             tools: tools,
-            stream: stream
+            stream: stream,
+            temperature: temperature,
+            maxTokens: maxTokens
         ))
         return req
     }

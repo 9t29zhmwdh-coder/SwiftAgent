@@ -5,9 +5,20 @@ public final class LlamaCppProvider: LLMProvider, @unchecked Sendable {
     public var modelName: String { underlying.modelName }
     public var baseURL: URL { underlying.baseURL }
 
-    public init(modelName: String = "local-model", host: String = "localhost", port: Int = 8080) {
+    public init(
+        modelName: String = "local-model",
+        host: String = "localhost",
+        port: Int = 8080,
+        temperature: Double? = nil,
+        maxTokens: Int? = nil
+    ) {
         let url = URL(string: "http://\(host):\(port)")!
-        self.underlying = OpenAICompatibleProvider(modelName: modelName, baseURL: url)
+        self.underlying = OpenAICompatibleProvider(
+            modelName: modelName,
+            baseURL: url,
+            temperature: temperature,
+            maxTokens: maxTokens
+        )
     }
 
     public func chat(messages: [ChatMessage], tools: [ToolDefinition]?) async throws -> ChatResponse {

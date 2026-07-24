@@ -21,6 +21,40 @@ final class OpenAICompatibleProviderTests: XCTestCase {
         XCTAssertEqual(provider.baseURL, URL(string: "http://192.168.1.1:9999")!)
     }
 
+    func testTemperatureAndMaxTokensReachTheRequestBody() async throws {
+        let config = URLSessionConfiguration.ephemeral
+        config.protocolClasses = [MockHTTPURLProtocol.self]
+        let session = URLSession(configuration: config)
+
+        var capturedBody: Data?
+        MockHTTPURLProtocol.requestHandler = { request in
+            capturedBody = request.httpBody ?? request.readBodyFromStream()
+            let response = HTTPURLResponse(
+                url: URL(string: "http://localhost:11434/v1/chat/completions")!,
+                statusCode: 200, httpVersion: nil, headerFields: nil
+            )!
+            let body = """
+            {"id":"1","model":"test","choices":[{"index":0,"message":{"role":"assistant","content":"ok"},"finish_reason":"stop"}]}
+            """
+            return (response, Data(body.utf8))
+        }
+
+        let provider = OpenAICompatibleProvider(
+            modelName: "test",
+            baseURL: URL(string: "http://localhost:11434")!,
+            urlSession: session,
+            temperature: 0.3,
+            maxTokens: 512
+        )
+        _ = try await provider.chat(messages: [.user("test")], tools: nil)
+
+        let json = try XCTUnwrap(
+            JSONSerialization.jsonObject(with: XCTUnwrap(capturedBody)) as? [String: Any]
+        )
+        XCTAssertEqual(json["temperature"] as? Double, 0.3)
+        XCTAssertEqual(json["max_tokens"] as? Int, 512)
+    }
+
     func testHTTP500ThrowsLLMError() async {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockHTTPURLProtocol.self]
@@ -79,4 +113,25 @@ final class MockHTTPURLProtocol: URLProtocol {
     }
 
     override func stopLoading() {}
+}
+
+private extension URLRequest {
+    /// URLSession liefert den Body als Stream statt als `httpBody`, sobald ein custom
+    /// `URLProtocol` im Spiel ist. Fuer Tests, die den gesendeten JSON-Body pruefen wollen.
+    func readBodyFromStream() -> Data? {
+        guard let stream = httpBodyStream else { return nil }
+        stream.open()
+        defer { stream.close() }
+
+        var data = Data()
+        let bufferSize = 4096
+        var buffer = [UInt8](repeating: 0, count: bufferSize)
+        while stream.hasBytesAvailable {
+            let read = stream.read(&buffer, maxLength: bufferSize)
+            if read < 0 { break }
+            if read == 0 { break }
+            data.append(buffer, count: read)
+        }
+        return data
+    }
 }
