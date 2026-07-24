@@ -57,7 +57,12 @@ public actor Agent {
         tools: [any Tool] = [],
         configuration: AgentConfiguration = .default
     ) -> Agent {
-        Agent(provider: OllamaProvider(modelName: modelName), tools: tools, configuration: configuration)
+        let provider = OllamaProvider(
+            modelName: modelName,
+            temperature: configuration.temperature,
+            maxTokens: configuration.maxTokens
+        )
+        return Agent(provider: provider, tools: tools, configuration: configuration)
     }
 
     public static func llamaCpp(
@@ -65,7 +70,12 @@ public actor Agent {
         tools: [any Tool] = [],
         configuration: AgentConfiguration = .default
     ) -> Agent {
-        Agent(provider: LlamaCppProvider(modelName: modelName), tools: tools, configuration: configuration)
+        let provider = LlamaCppProvider(
+            modelName: modelName,
+            temperature: configuration.temperature,
+            maxTokens: configuration.maxTokens
+        )
+        return Agent(provider: provider, tools: tools, configuration: configuration)
     }
 
     // MARK: - Tool-Verwaltung
