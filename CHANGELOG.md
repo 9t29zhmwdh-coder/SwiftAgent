@@ -3,6 +3,15 @@
 All notable changes to SwiftAgent will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.1] - 2026-07-29
+
+### Changed
+
+- CodeQL moved from GitHub's default setup to an advanced setup with a committed `.github/workflows/codeql.yml`. The default setup decides on its own when to run and skips pull requests that touch no code of a given language, so a dependency pull request changing only a manifest reported `skipping` on the required `Analyze (actions)` and `Analyze (swift)` checks and could never be merged. The workflow runs on every pull request regardless of what changed and uses the `security-extended` query suite, which the default setup does not allow choosing. Swift runs on a macOS runner with `build-mode: autobuild` because it needs a real compile; `actions` is a scanned-file language and stays on Linux. Required checks are unchanged.
+- `.github/dependabot.yml` now groups updates per ecosystem and carries the `chore(ci)` and `chore(deps)` commit prefixes, matching the rest of the portfolio. Without grouping every single dependency opened its own pull request. The Swift group is limited to `minor` and `patch`, so a major bump cannot land inside a grouped pull request that reads as routine.
+
+---
+
 ## [1.1.0] - 2026-07-24
 
 ### Added
