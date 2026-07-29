@@ -3,6 +3,14 @@
 All notable changes to SwiftAgent will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.3] - 2026-07-29
+
+### Added
+
+- `.github/workflows/release.yml`. Pushing a version tag produced nothing here: the tag landed in the repository and no release was ever created, which is how several versions ended up tagged but unreleased. The gap only showed when the tag list was compared against the release list. This package builds a library rather than an executable, so the workflow ships no artifact and takes the release notes from the matching `CHANGELOG.md` section, which keeps them from being maintained separately from the file.
+
+---
+
 ## [1.1.2] - 2026-07-29
 
 ### Changed
