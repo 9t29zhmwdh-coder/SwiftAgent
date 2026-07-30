@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug in SwiftAgent
+about: Report a bug in EmissaryKit
 labels: bug
 ---
 
@@ -19,7 +19,7 @@ What you expected to happen.
 - Swift version (`swift --version`):
 - LLM backend (Ollama / llama.cpp):
 - Model name:
-- SwiftAgent version:
+- EmissaryKit version:
 
 ## Additional context
 Logs, stack traces, etc.

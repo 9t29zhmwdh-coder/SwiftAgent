@@ -1,4 +1,4 @@
-# Contributing to SwiftAgent
+# Contributing to EmissaryKit
 
 ## Getting Started
 
@@ -11,7 +11,7 @@
 ### Setup
 
 1. Fork the repository
-2. `git clone https://github.com/YOUR_USERNAME/SwiftAgent`
+2. `git clone https://github.com/YOUR_USERNAME/EmissaryKit`
 3. Open in Xcode: `open Package.swift` (this is a Swift Package, there is no `.xcodeproj`)
 4. Build: `⌘+B`
 

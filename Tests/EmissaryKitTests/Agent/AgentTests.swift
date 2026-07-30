@@ -1,5 +1,5 @@
 import XCTest
-@testable import SwiftAgent
+@testable import EmissaryKit
 
 final class AgentTests: XCTestCase {
 

@@ -1,6 +1,6 @@
-# Getting Started with SwiftAgent
+# Getting Started with EmissaryKit
 
-SwiftAgent is a Swift Package Manager **library**, not a standalone app. This guide is for Swift developers who want to add it to their own Xcode project or Swift package and run their first agent call.
+EmissaryKit is a Swift Package Manager **library**, not a standalone app. This guide is for Swift developers who want to add it to their own Xcode project or Swift package and run their first agent call.
 
 > **Requirements:** Swift 5.9+, macOS 13+ or iOS 16+, and either [Ollama](https://ollama.com) or a [llama.cpp server](https://github.com/ggerganov/llama.cpp) running locally.
 
@@ -8,7 +8,7 @@ SwiftAgent is a Swift Package Manager **library**, not a standalone app. This gu
 
 ## 1. Start a local model server
 
-SwiftAgent talks to a model server over HTTP, it does not bundle or run a model itself.
+EmissaryKit talks to a model server over HTTP, it does not bundle or run a model itself.
 
 **Option A: Ollama (recommended for a first try)**
 
@@ -29,23 +29,23 @@ Start `llama-server` with an OpenAI-compatible endpoint on port `8080`. See the 
 
 ---
 
-## 2. Add SwiftAgent to your project
+## 2. Add EmissaryKit to your project
 
 **In Xcode:**
 
 1. Open your project or workspace.
 2. File → Add Package Dependencies…
-3. Enter `https://github.com/9t29zhmwdh-coder/SwiftAgent` and choose a version rule (e.g. "Up to Next Major").
-4. Add the `SwiftAgent` product to your app target.
+3. Enter `https://github.com/9t29zhmwdh-coder/EmissaryKit` and choose a version rule (e.g. "Up to Next Major").
+4. Add the `EmissaryKit` product to your app target.
 
 **In a `Package.swift` for your own Swift package:**
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/9t29zhmwdh-coder/SwiftAgent", from: "1.0.0")
+    .package(url: "https://github.com/9t29zhmwdh-coder/EmissaryKit", from: "1.0.0")
 ],
 targets: [
-    .target(name: "YourTarget", dependencies: ["SwiftAgent"])
+    .target(name: "YourTarget", dependencies: ["EmissaryKit"])
 ]
 ```
 
@@ -62,7 +62,7 @@ swift package resolve
 With Ollama running from step 1, add this to any `async` context in your app:
 
 ```swift
-import SwiftAgent
+import EmissaryKit
 
 let agent = Agent.ollama(modelName: "llama3.2")
 let result = try await agent.run("What is the Fibonacci sequence?")
@@ -80,5 +80,5 @@ If you see a text response printed, everything is wired up correctly.
 
 ## Something not working?
 
-- `curl http://localhost:11434/api/tags` (Ollama) or the llama.cpp server's equivalent must succeed before any `Agent.run(...)` call will work, connection errors from SwiftAgent almost always mean the model server isn't reachable yet.
-- Check [GitHub Issues](https://github.com/9t29zhmwdh-coder/SwiftAgent/issues) to see if someone already ran into the same problem, or open a new one with the exact error.
+- `curl http://localhost:11434/api/tags` (Ollama) or the llama.cpp server's equivalent must succeed before any `Agent.run(...)` call will work, connection errors from EmissaryKit almost always mean the model server isn't reachable yet.
+- Check [GitHub Issues](https://github.com/9t29zhmwdh-coder/EmissaryKit/issues) to see if someone already ran into the same problem, or open a new one with the exact error.

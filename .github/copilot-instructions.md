@@ -1,4 +1,4 @@
-# Copilot Instructions for SwiftAgent
+# Copilot Instructions for EmissaryKit
 A lightweight, modular Swift agent framework for local LLMs, with no external dependencies and pure Foundation + URLSession, working out of the box with Ollama and llama.cpp.
 ## Code style
 - Functions stay small and single-purpose, prefer under 20 lines

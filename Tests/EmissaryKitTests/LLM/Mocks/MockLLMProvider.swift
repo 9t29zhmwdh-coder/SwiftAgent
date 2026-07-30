@@ -1,5 +1,5 @@
 import Foundation
-@testable import SwiftAgent
+@testable import EmissaryKit
 
 actor MockLLMProvider: LLMProvider {
     nonisolated let modelName: String

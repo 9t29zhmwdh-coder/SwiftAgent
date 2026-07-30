@@ -2,10 +2,10 @@
 
 ## Overview
 
-SwiftAgent is a lightweight, modular Swift package providing a ReAct agent loop for local LLMs, using only Foundation and URLSession, no external dependencies.
+EmissaryKit is a lightweight, modular Swift package providing a ReAct agent loop for local LLMs, using only Foundation and URLSession, no external dependencies.
 
 ```
-Sources/SwiftAgent/
+Sources/EmissaryKit/
 ├── Agent/
 │   ├── Agent.swift                  # Public actor facade (run, runStream, chat, clearMemory)
 │   └── AgentConfiguration.swift     # Presets (default, codeAssistant, generalAssistant)

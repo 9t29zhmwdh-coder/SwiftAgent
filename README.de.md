@@ -1,12 +1,12 @@
 <div align="center">
   <img src="RayStudio.png" alt="RayStudio Logo" width="120"/>
 
-  <h1>SwiftAgent</h1>
+  <h1>EmissaryKit</h1>
 </div>
 
 [🇬🇧 English Version](README.md)
 
-[![CI](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions) [![CodeQL](https://github.com/9t29zhmwdh-coder/SwiftAgent/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/9t29zhmwdh-coder/SwiftAgent/security/code-scanning) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/9t29zhmwdh-coder/SwiftAgent/badge)](https://securityscorecards.dev/viewer/?uri=github.com/9t29zhmwdh-coder/SwiftAgent) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13683/badge)](https://www.bestpractices.dev/projects/13683)
+[![CI](https://github.com/9t29zhmwdh-coder/EmissaryKit/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/EmissaryKit/actions) [![CodeQL](https://github.com/9t29zhmwdh-coder/EmissaryKit/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/9t29zhmwdh-coder/EmissaryKit/security/code-scanning) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/9t29zhmwdh-coder/EmissaryKit/badge)](https://securityscorecards.dev/viewer/?uri=github.com/9t29zhmwdh-coder/EmissaryKit) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13683/badge)](https://www.bestpractices.dev/projects/13683)
 
 ![Apple Silicon](https://img.shields.io/badge/Apple-Silicon-000000?logo=apple&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-macOS_%7C_iOS-lightgrey?logo=apple&logoColor=black) ![Swift](https://img.shields.io/badge/Swift-F05138?logo=swift&logoColor=white) ![AI | Claude Code](https://img.shields.io/badge/AI-Claude_Code-black?logo=anthropic&logoColor=white) ![AI | Copilot](https://img.shields.io/badge/AI-Copilot-black?logo=github&logoColor=white) ![AI | Ollama](https://img.shields.io/badge/AI-Ollama-black?logo=ollama&logoColor=white)
 
@@ -46,7 +46,7 @@ Funktioniert direkt mit **Ollama** (Port 11434) und **llama.cpp** (Port 8080) ü
 ### Ollama
 
 ```swift
-import SwiftAgent
+import EmissaryKit
 
 let agent = Agent.ollama(modelName: "llama3.2")
 let result = try await agent.run("Was ist die Fibonacci-Folge?")
@@ -164,18 +164,18 @@ Agent (Actor)
 
 ## Deinstallation / Aufräumen
 
-SwiftAgent ist eine Library, kein installiertes Programm: entferne es aus den `Package.swift`-Dependencies deiner Host-App (und lösche den aufgelösten Eintrag in `Package.resolved`), damit ist es weg. SwiftAgent selbst schreibt keine Dateien, keine `UserDefaults` und keine Keychain-Einträge; `FilesystemTool` fasst nur Pfade an, die deine eigene App ihm explizit über `allowedBasePath` übergibt. Jegliches Konversations-Memory lebt nur im Prozess deiner App und verschwindet, wenn diese beendet wird.
+EmissaryKit ist eine Library, kein installiertes Programm: entferne es aus den `Package.swift`-Dependencies deiner Host-App (und lösche den aufgelösten Eintrag in `Package.resolved`), damit ist es weg. EmissaryKit selbst schreibt keine Dateien, keine `UserDefaults` und keine Keychain-Einträge; `FilesystemTool` fasst nur Pfade an, die deine eigene App ihm explizit über `allowedBasePath` übergibt. Jegliches Konversations-Memory lebt nur im Prozess deiner App und verschwindet, wenn diese beendet wird.
 
 ---
 
 ## Tests ausführen
 
 ```bash
-cd /path/to/SwiftAgent
+cd /path/to/EmissaryKit
 swift test
 ```
 
 ---
 
-**Autor:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Active · ![version](https://img.shields.io/github/v/release/9t29zhmwdh-coder/SwiftAgent?color=6b7280&style=flat-square) · **Lizenz:** MIT
+**Autor:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Active · ![version](https://img.shields.io/github/v/release/9t29zhmwdh-coder/EmissaryKit?color=6b7280&style=flat-square) · **Lizenz:** MIT
 
