@@ -1,5 +1,5 @@
 import Foundation
-@testable import SwiftAgent
+@testable import EmissaryKit
 
 actor MockMemoryStore: MemoryStore {
     private var messages: [ChatMessage] = []

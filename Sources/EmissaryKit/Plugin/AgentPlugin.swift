@@ -24,7 +24,7 @@ extension AgentPlugin {
 public final class LoggingPlugin: AgentPlugin, @unchecked Sendable {
     private let prefix: String
 
-    public init(prefix: String = "[SwiftAgent]") {
+    public init(prefix: String = "[EmissaryKit]") {
         self.prefix = prefix
     }
 

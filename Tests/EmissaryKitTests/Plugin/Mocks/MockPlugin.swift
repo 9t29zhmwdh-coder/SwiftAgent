@@ -1,5 +1,5 @@
 import Foundation
-@testable import SwiftAgent
+@testable import EmissaryKit
 
 actor MockPlugin: AgentPlugin {
     var willCallLLMCount: Int = 0

@@ -1,5 +1,5 @@
 import XCTest
-@testable import SwiftAgent
+@testable import EmissaryKit
 
 final class FilesystemToolTests: XCTestCase {
 
@@ -8,7 +8,7 @@ final class FilesystemToolTests: XCTestCase {
 
     override func setUp() async throws {
         tempDir = FileManager.default.temporaryDirectory
-            .appendingPathComponent("SwiftAgentTests_\(UUID().uuidString)")
+            .appendingPathComponent("EmissaryKitTests_\(UUID().uuidString)")
         try FileManager.default.createDirectory(at: tempDir, withIntermediateDirectories: true)
         tool = FilesystemTool(allowedBasePath: tempDir)
     }
@@ -20,12 +20,12 @@ final class FilesystemToolTests: XCTestCase {
     func testWriteAndRead() async throws {
         let path = tempDir.appendingPathComponent("test.txt").path
         let writeResult = try await tool.execute(input: [
-            "action": "write_file", "path": path, "content": "Hallo SwiftAgent!"
+            "action": "write_file", "path": path, "content": "Hallo EmissaryKit!"
         ])
         XCTAssertTrue(writeResult.contains("erfolgreich"))
 
         let readResult = try await tool.execute(input: ["action": "read_file", "path": path])
-        XCTAssertEqual(readResult, "Hallo SwiftAgent!")
+        XCTAssertEqual(readResult, "Hallo EmissaryKit!")
     }
 
     func testFileExists() async throws {

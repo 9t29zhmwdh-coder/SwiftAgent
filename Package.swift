@@ -2,29 +2,29 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftAgent",
+    name: "EmissaryKit",
     platforms: [
         .macOS(.v13),
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "SwiftAgent",
-            targets: ["SwiftAgent"]
+            name: "EmissaryKit",
+            targets: ["EmissaryKit"]
         ),
     ],
     targets: [
         .target(
-            name: "SwiftAgent",
-            path: "Sources/SwiftAgent",
+            name: "EmissaryKit",
+            path: "Sources/EmissaryKit",
             swiftSettings: [
                 .enableExperimentalFeature("StrictConcurrency")
             ]
         ),
         .testTarget(
-            name: "SwiftAgentTests",
-            dependencies: ["SwiftAgent"],
-            path: "Tests/SwiftAgentTests"
+            name: "EmissaryKitTests",
+            dependencies: ["EmissaryKit"],
+            path: "Tests/EmissaryKitTests"
         ),
     ]
 )

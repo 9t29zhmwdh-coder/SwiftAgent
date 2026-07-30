@@ -1,5 +1,5 @@
 import Foundation
-@testable import SwiftAgent
+@testable import EmissaryKit
 
 struct MockTool: Tool {
     let name: String

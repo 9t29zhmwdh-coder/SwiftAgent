@@ -1,7 +1,16 @@
 # Changelog
 
-All notable changes to SwiftAgent will be documented here.
+All notable changes to EmissaryKit, formerly SwiftAgent, will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## [1.2.0] - 2026-07-30
+
+### Changed
+
+- Renamed from SwiftAgent to EmissaryKit. Two actively maintained Swift agent frameworks carry the old name on GitHub, one with 219 stars and one with 98, both describing themselves the same way this package does. The collision was in the same category on the same platform, not merely a similar word.
+- The Swift module is renamed with it, so `import SwiftAgent` becomes `import EmissaryKit`. Anything depending on this package has to change that line and the product name in its `Package.swift`.
+
+---
 
 ## [1.1.4] - 2026-07-29
 
