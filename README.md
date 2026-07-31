@@ -10,13 +10,47 @@
 
 ![Apple Silicon](https://img.shields.io/badge/Apple-Silicon-000000?logo=apple&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-macOS_%7C_iOS-lightgrey?logo=apple&logoColor=black) ![Swift](https://img.shields.io/badge/Swift-F05138?logo=swift&logoColor=white) ![AI | Claude Code](https://img.shields.io/badge/AI-Claude_Code-black?logo=anthropic&logoColor=white) ![AI | Copilot](https://img.shields.io/badge/AI-Copilot-black?logo=github&logoColor=white) ![AI | Ollama](https://img.shields.io/badge/AI-Ollama-black?logo=ollama&logoColor=white)
 
-A lightweight, modular Swift agent framework for local LLMs; no external dependencies, pure Foundation + URLSession.
+**Lets a local language model do things, not just answer.**
 
-Works out of the box with **Ollama** (port 11434) and **llama.cpp** (port 8080) via their OpenAI-compatible APIs.
+Calling Ollama yourself gets you text back. EmissaryKit gives the model tools it
+can decide to use, then runs the loop until the job is done:
+
+```swift
+let agent = Agent(
+    provider: OllamaProvider(modelName: "llama3.2"),
+    tools: [FilesystemTool(allowedBasePath: URL(fileURLWithPath: "/tmp"))]
+)
+
+try await agent.run("Read /tmp/notes.txt and summarise it.")
+```
+
+The model reads that as two steps: open the file, then summarise what it found.
+It calls the tool, receives the contents, and writes the summary. You wrote no
+control flow for any of it.
+
+Everything runs against a model on your own machine. Nothing is sent anywhere.
+
+> ℹ️ A Swift Package Manager library to embed in your own project, not an app.
+> There is nothing to install and run separately.
 
 ---
 
-> ℹ️ This is a Swift Package Manager library for developers to embed in their own projects, not a standalone app: add it as a dependency in `Package.swift`, there's nothing to "install and run" separately.
+## Why not just call the API yourself
+
+For a single question, do. You need this once the model has to *act*:
+
+| You want | Without a framework | With EmissaryKit |
+|---|---|---|
+| the model to read a file, then answer | parse its reply, guess what it meant, call the right function, feed the result back, repeat | pass a tool, call `run` |
+| output as it is generated | parse a server-sent event stream by hand | `for try await event in agent.runStream(...)` |
+| a conversation longer than the context window | decide what to drop | sliding window, or a summary of what fell out |
+| to stop the model touching the wrong files | write the guard yourself | `FilesystemTool(allowedBasePath:)` |
+
+Three tools ship with it: filesystem, HTTP, and shell on macOS. Each takes its
+limits at construction, so a tool cannot reach past what you allowed.
+
+The whole library is about 1300 lines of Swift and pulls in nothing beyond
+Foundation and URLSession.
 
 ---
 

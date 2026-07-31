@@ -10,13 +10,50 @@
 
 ![Apple Silicon](https://img.shields.io/badge/Apple-Silicon-000000?logo=apple&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-macOS_%7C_iOS-lightgrey?logo=apple&logoColor=black) ![Swift](https://img.shields.io/badge/Swift-F05138?logo=swift&logoColor=white) ![AI | Claude Code](https://img.shields.io/badge/AI-Claude_Code-black?logo=anthropic&logoColor=white) ![AI | Copilot](https://img.shields.io/badge/AI-Copilot-black?logo=github&logoColor=white) ![AI | Ollama](https://img.shields.io/badge/AI-Ollama-black?logo=ollama&logoColor=white)
 
-Ein leichtgewichtiges, modulares Swift-Agent-Framework für lokale LLMs; keine externen Abhängigkeiten, reines Foundation + URLSession.
+**Lässt ein lokales Sprachmodell etwas tun, nicht nur antworten.**
 
-Funktioniert direkt mit **Ollama** (Port 11434) und **llama.cpp** (Port 8080) über deren OpenAI-kompatible APIs.
+Wer Ollama selbst aufruft, bekommt Text zurück. EmissaryKit gibt dem Modell
+Werkzeuge, die es selbst einsetzen kann, und dreht die Schleife bis die Aufgabe
+erledigt ist:
+
+```swift
+let agent = Agent(
+    provider: OllamaProvider(modelName: "llama3.2"),
+    tools: [FilesystemTool(allowedBasePath: URL(fileURLWithPath: "/tmp"))]
+)
+
+try await agent.run("Lies /tmp/notizen.txt und fasse es zusammen.")
+```
+
+Das Modell liest daraus zwei Schritte: Datei öffnen, dann zusammenfassen. Es
+ruft das Werkzeug auf, bekommt den Inhalt und schreibt die Zusammenfassung. Du
+hast für nichts davon Ablauflogik geschrieben.
+
+Alles läuft gegen ein Modell auf deinem Gerät. Nichts wird irgendwohin gesendet.
+
+> ℹ️ Eine Swift-Package-Manager-Bibliothek zum Einbetten ins eigene Projekt,
+> keine App. Es gibt nichts separat zu installieren und zu starten.
 
 ---
 
-> ℹ️ Dies ist eine Swift-Package-Manager-Bibliothek für Entwickler, um sie in eigene Projekte einzubetten, keine eigenständige App: als Abhängigkeit in `Package.swift` hinzufügen, es gibt nichts separat zu "installieren und starten".
+## Warum nicht einfach die API selbst aufrufen
+
+Für eine einzelne Frage: mach das. Das hier brauchst du, sobald das Modell
+*handeln* soll:
+
+| Du willst | Ohne Framework | Mit EmissaryKit |
+|---|---|---|
+| das Modell liest eine Datei, dann antwortet es | Antwort parsen, raten was gemeint war, die richtige Funktion rufen, Ergebnis zurückgeben, wiederholen | Werkzeug übergeben, `run` aufrufen |
+| Ausgabe während sie entsteht | Server-Sent-Event-Strom von Hand zerlegen | `for try await event in agent.runStream(...)` |
+| ein Gespräch länger als das Kontextfenster | selbst entscheiden was wegfällt | gleitendes Fenster, oder Zusammenfassung des Weggefallenen |
+| verhindern, dass das Modell die falschen Dateien anfasst | Absicherung selbst schreiben | `FilesystemTool(allowedBasePath:)` |
+
+Drei Werkzeuge sind dabei: Dateisystem, HTTP und Shell unter macOS. Jedes bekommt
+seine Grenzen bei der Erzeugung, ein Werkzeug kann also nicht über das
+hinausgreifen, was du erlaubt hast.
+
+Die ganze Bibliothek sind rund 1300 Zeilen Swift und zieht nichts ausser
+Foundation und URLSession herein.
 
 ---
 
