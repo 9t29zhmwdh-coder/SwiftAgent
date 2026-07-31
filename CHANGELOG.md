@@ -3,6 +3,16 @@
 All notable changes to EmissaryKit, formerly SwiftAgent, will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.1] - 2026-07-31
+
+### Changed
+
+- The README opens with what the package does for the reader rather than what it is made of. It previously began "a lightweight, modular Swift agent framework for local LLMs" followed by a list of `ReAct Loop`, `Tool System`, `Memory` and `Plugin Architecture`. Those name the parts; somebody who does not already know the field learned nothing from them, and the most convincing example, a model reading a file and summarising it, sat seventy lines down.
+- A section answers the obvious question a library like this has to answer: why not call the API directly. For one question you should, and it says so. The answer is the loop, the tools, the streaming and the limits you can put on a tool at construction.
+- The repository description follows the same change.
+
+---
+
 ## [1.2.0] - 2026-07-30
 
 ### Changed
