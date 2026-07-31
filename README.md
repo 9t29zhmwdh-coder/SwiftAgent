@@ -30,6 +30,10 @@ control flow for any of it.
 
 Everything runs against a model on your own machine. Nothing is sent anywhere.
 
+**Not for you if** one prompt and one answer is all you need: call the endpoint
+yourself, it is a dozen lines and no dependency. [Why not just call the API
+yourself](#why-not-just-call-the-api-yourself) has the full comparison.
+
 > ℹ️ A Swift Package Manager library to embed in your own project, not an app.
 > There is nothing to install and run separately.
 
