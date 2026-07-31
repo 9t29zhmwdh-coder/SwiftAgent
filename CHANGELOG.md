@@ -3,6 +3,14 @@
 All notable changes to EmissaryKit, formerly SwiftAgent, will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.2] - 2026-07-31
+
+### Changed
+
+- The exclusion moved onto the first screen. "Why not just call the API yourself" already said that one question needs no framework, but it sat below the fold, so a visitor deciding whether this is their problem had to scroll past the pitch to reach the caveat.
+
+---
+
 ## [1.2.1] - 2026-07-31
 
 ### Changed

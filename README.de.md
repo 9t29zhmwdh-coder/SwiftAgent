@@ -31,6 +31,10 @@ hast für nichts davon Ablauflogik geschrieben.
 
 Alles läuft gegen ein Modell auf deinem Gerät. Nichts wird irgendwohin gesendet.
 
+**Nichts für dich, wenn** ein Prompt und eine Antwort schon reichen: dann rufst
+du den Endpoint selbst auf, das sind ein Dutzend Zeilen ohne Abhängigkeit. Der
+vollständige Vergleich steht weiter unten.
+
 > ℹ️ Eine Swift-Package-Manager-Bibliothek zum Einbetten ins eigene Projekt,
 > keine App. Es gibt nichts separat zu installieren und zu starten.
 
